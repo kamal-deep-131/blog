@@ -1,6 +1,7 @@
 import express from 'express'
 import homeRoutes from "./routes/home.routes.js"
 import blogRoutes from './routes/blog.routes.js'
+import userRoutes from './routes/user.routes.js'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 
@@ -9,6 +10,7 @@ const PORT = 3000
 
 dotenv.config()
 
+    // mongodb connection 
     ; (async () => {
         try {
             await mongoose.connect(process.env.MNGODB_URL)
@@ -20,6 +22,10 @@ dotenv.config()
 
 // home routes 
 app.use("/", homeRoutes)
+
+//user routes
+
+app.use('/api/v1/user/', userRoutes)
 
 // blog routes 
 app.use('/api/v1/blogs/', blogRoutes)
