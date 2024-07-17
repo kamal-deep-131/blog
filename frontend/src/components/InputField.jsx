@@ -1,8 +1,7 @@
-// src/components/InputField.js
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const InputField = ({ label, type = "text", placeholder, value, onChange }) => {
+const InputField = ({ label, type = "text", placeholder, value, onChange, readOnly }) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const handleTogglePasswordVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible);
@@ -20,6 +19,7 @@ const InputField = ({ label, type = "text", placeholder, value, onChange }) => {
                     className="input input-bordered w-full pr-10"
                     value={value}
                     onChange={onChange}
+                    readOnly={readOnly}
                 />
                 {type === 'password' && (
                     <button

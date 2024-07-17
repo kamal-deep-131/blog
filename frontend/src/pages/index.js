@@ -4,5 +4,6 @@ import Register from './Register.jsx'
 import SingleBlogPage from "./SingleBlogPage.jsx"
 import Profile from './Profile.jsx'
 import PageNotFound from './PageNotFound.jsx'
+import AddBlog from "./AddBlog.jsx"
 
-export { Home, Login, Register, SingleBlogPage, Profile, PageNotFound }
+export { Home, Login, Register, SingleBlogPage, Profile, PageNotFound, AddBlog }
