@@ -1,9 +1,24 @@
 import express from 'express'
 import homeRoutes from "./routes/home.routes.js"
 import blogRoutes from './routes/blog.routes.js'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'
 
 const app = express()
 const PORT = 3000
+
+// dotenv configuration
+dotenv.config()
+    // app.use(configDotenv())
+
+    ; (async () => {
+        try {
+            await mongoose.connect(process.env.MNGODB_URL)
+            console.log("Database connected")
+        } catch (error) {
+            console.log("Errror in DB connection", error)
+        }
+    })()
 
 // home routes 
 app.use("/", homeRoutes)
