@@ -7,9 +7,7 @@ import dotenv from 'dotenv'
 const app = express()
 const PORT = 3000
 
-// dotenv configuration
 dotenv.config()
-    // app.use(configDotenv())
 
     ; (async () => {
         try {
