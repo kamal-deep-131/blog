@@ -4,16 +4,21 @@ import blogRoutes from './routes/blog.routes.js'
 import userRoutes from './routes/user.routes.js'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 const app = express()
 const PORT = 3000
 
 dotenv.config()
+app.use(express.json({ limit: '20kb' }))
+app.use(cors({
+    origin: '*'
+}))
 
     // mongodb connection 
     ; (async () => {
         try {
-            await mongoose.connect(process.env.MNGODB_URL)
+            await mongoose.connect(`${process.env.MNGODB_URL}${process.env.DATABASE}`)
             console.log("Database connected")
         } catch (error) {
             console.log("Errror in DB connection", error)

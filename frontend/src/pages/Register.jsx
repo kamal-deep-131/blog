@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import InputField from '../components/InputField'
+import { contextStore } from '../context/context'
 
 const Register = () => {
-    const [userName, setUserName] = useState("")
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const { register } = contextStore()
+
     const handleUserNameChange = (e) => {
-        setUserName(e.target.value)
+        setUsername(e.target.value)
     }
 
     const handleEmailChange = (e) => {
@@ -20,7 +23,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(userName, email, password)
+        register(username, email, password)
     }
 
 
@@ -33,7 +36,7 @@ const Register = () => {
                     label="Username: "
                     type='text'
                     placeholder="myusername"
-                    value={userName}
+                    value={username}
                     onChange={handleUserNameChange}
                 />
 

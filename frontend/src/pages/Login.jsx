@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import InputField from '../components/InputField'
+import { contextStore } from '../context/context'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const { login } = contextStore()
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -15,7 +17,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password)
+        login(email, password)
     }
 
     return (
