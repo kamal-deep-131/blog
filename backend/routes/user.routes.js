@@ -82,7 +82,6 @@ router.post('/login', async (req, res) => {
                 email: newUser.email
             }
         })
-
     }
 })
 
