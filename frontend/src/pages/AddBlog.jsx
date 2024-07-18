@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import slugify from 'slugify';
+import axios from 'axios'
 import InputField from '../components/InputField';
 
 const AddBlog = () => {
     const [title, setTitle] = useState('');
     const [slug, setSlug] = useState('');
     const [content, setContent] = useState('');
+
+    const addBlog = async (title, slug, content) => {
+        try {
+            const response = await axios.post('api/v1/blogs/add-blog', { title, slug, content })
+            console.log("Blog added", response)
+        } catch (error) {
+            console.log("Error in adding blog: ", error)
+        }
+
+    }
 
     const handleTitleChange = (e) => {
         const newTitle = e.target.value;
@@ -22,6 +33,8 @@ const AddBlog = () => {
         console.log('Title:', title);
         console.log('Slug:', slug);
         console.log('Content:', content);
+
+        addBlog(title, slug, content)
         // Add your submit logic here (e.g., send data to your API)
     };
 
