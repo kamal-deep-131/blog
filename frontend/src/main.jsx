@@ -5,7 +5,7 @@ import './index.css';
 import { Layout } from './components';
 import { Home, Register, Login, SingleBlogPage, Profile, PageNotFound, AddBlog } from './pages';
 import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from 'react-router-dom';
-import ProtectedRoutes from './components/ProtectedRoutes.jsx';
+// import ProtectedRoutes from './components/ProtectedRoutes.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromChildren(
@@ -13,9 +13,10 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/profile' element={<ProtectedRoutes>
+      <Route path='/profile' element={<Profile />} />
+      {/* <Route path='/profile' element={<ProtectedRoutes>
         <Profile />
-      </ProtectedRoutes>} />
+      </ProtectedRoutes>} /> */}
       <Route path='/add-blog' element={<AddBlog />} />
       <Route path='/single-blog' element={<SingleBlogPage />} />
 

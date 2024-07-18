@@ -1,9 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { contextStore } from '../context/context.jsx'
 
 const Profile = () => {
 
-    const user = {
+    let { user } = contextStore()
+    console.log(user)
+
+    if (!user) {
+        user = {
+            avatar: 'https://via.placeholder.com/150',
+            name: 'Kamaldeep',
+            email: 'email2kamaldeep@gmail.com',
+        }
+    }
+    const userdata = {
         avatar: 'https://via.placeholder.com/150',
         name: 'Kamaldeep',
         email: 'email2kamaldeep@gmail.com',
@@ -32,15 +43,15 @@ const Profile = () => {
             <div className="max-w-screen-lg w-full border border-gray-400 rounded-lg overflow-hidden">
                 <div className="flex flex-col items-center p-6">
                     <img
-                        src={user.avatar}
+                        src={'https://via.placeholder.com/150'}
                         alt={user.name}
                         className="w-32 h-32 rounded-full object-cover mb-4"
                     />
                     <h1 className="text-3xl font-bold mb-2">{user.name}</h1>
                     <p className="mb-4">{user.email}</p>
-                    <Link to="/write-blog"
+                    <Link to="/add-blog"
                         className="btn btn-primary" >
-                        Write a Blog
+                        Add new Blog
                     </Link>
                 </div>
                 <div className="divider"></div>
