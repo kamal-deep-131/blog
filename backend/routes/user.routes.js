@@ -53,8 +53,6 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
 
-    console.log(email, password)
-
     if (!(email && password)) {
         return res.json(
             { message: "Field is missing" }
@@ -62,24 +60,20 @@ router.post('/login', async (req, res) => {
     }
 
     const newUser = await User.findOne({ email })
-    console.log(newUser)
 
     if (!newUser) {
         return res.json({ message: "User not found" })
     }
 
     const isPassword = await bcrypt.compare(password, newUser.password)
-    console.log(isPassword)
 
     if (!isPassword) {
         res.json({
             message: "Password is wrong"
         })
     }
-    console.log(process.env.JWT_SECRET);
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '2h' });
-    console.log(token);
 
     return res.json({
         token,

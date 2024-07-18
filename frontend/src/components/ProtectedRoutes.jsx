@@ -1,13 +1,11 @@
-import React from 'react'
-import { contextStore } from '../context/context.jsx'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { contextStore } from '../context/context.jsx';
 
 const ProtectedRoutes = ({ children }) => {
-    const user = contextStore()
-    if (!user) {
-        return <Navigate to="/sign-in" />;
-    }
+    const { user } = contextStore();
 
-    return children;
-}
+    return user ? children : <Navigate to="/login" replace />;
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;
