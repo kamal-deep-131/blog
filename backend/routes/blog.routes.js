@@ -10,7 +10,6 @@ router.post('/add-blog', async (req, res) => {
         return res.json({ message: "Enter all fields" })
     }
 
-    console.log(title, slug, content)
 
     try {
         const newBlog = new Blogs({
@@ -21,7 +20,6 @@ router.post('/add-blog', async (req, res) => {
 
         await newBlog.save()
 
-        console.log(newBlog)
         return res.json({ message: "Blog added sucssesfully" })
     } catch (error) {
         console.log("Error in storing blog: ", error)
@@ -30,10 +28,10 @@ router.post('/add-blog', async (req, res) => {
 })
 
 
-//find blog
+//find blog on the basis of slug
 router.get('/single-blog/:slug', async (req, res) => {
     const { slug } = req.params;
-    console.log(slug)
+
     try {
         const blog = await Blogs.findOne({ slug })
         if (!blog) {
@@ -43,6 +41,26 @@ router.get('/single-blog/:slug', async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.json({ "message": "Server error" })
+    }
+})
+
+//delete route 
+
+router.get('/delete/:slug', async (req, res) => {
+    const { slug } = req.params
+    try {
+        const isBlogPresent = await Blogs.findOne({ slug })
+        if (!isBlogPresent) {
+            return res.json({ message: "Requested blog didn't prsent" })
+        }
+        else {
+            const blog = await Blogs.deleteOne({ slug })
+            return res.json({ message: "Deleted Sucessfully" })
+        }
+
+    } catch (error) {
+        console.log("Error in deleting: ", error)
+        res.json({ Message: "error in server" })
     }
 })
 
