@@ -18,7 +18,7 @@ const router = createBrowserRouter(
         <Profile />
       </ProtectedRoutes>} /> */}
       <Route path='/add-blog' element={<AddBlog />} />
-      <Route path='/single-blog' element={<SingleBlogPage />} />
+      <Route path='/single-blog/:slug' element={<SingleBlogPage />} />
 
       {/* 404 page */}
       <Route path='*' element={<PageNotFound />} />
