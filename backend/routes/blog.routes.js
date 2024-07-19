@@ -29,4 +29,21 @@ router.post('/add-blog', async (req, res) => {
     }
 })
 
+
+//find blog
+router.get('/single-blog/:slug', async (req, res) => {
+    const { slug } = req.params;
+    console.log(slug)
+    try {
+        const blog = await Blogs.findOne({ slug })
+        if (!blog) {
+            return res.json({ message: "Blog not found" })
+        }
+        return res.json(blog)
+    } catch (error) {
+        console.log(error)
+        return res.json({ "message": "Server error" })
+    }
+})
+
 export default router
