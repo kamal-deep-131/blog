@@ -18,7 +18,6 @@ const useFetch = (url) => {
                 setIsLoading(false)
             }
         }
-
         fetchData()
     }, [url])
     return { data, isLoading, error }
