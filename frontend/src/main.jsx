@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { ContextProvider } from './context/context';
 import './index.css';
 import { Layout } from './components';
-import { Home, Register, Login, SingleBlogPage, Profile, PageNotFound, AddBlog } from './pages';
+import { Home, Register, Login, SingleBlogPage, Profile, PageNotFound, AddBlog, UpdateBlog } from './pages';
 import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from 'react-router-dom';
 // import ProtectedRoutes from './components/ProtectedRoutes.jsx';
 
@@ -19,6 +19,9 @@ const router = createBrowserRouter(
       </ProtectedRoutes>} /> */}
       <Route path='/add-blog' element={<AddBlog />} />
       <Route path='/single-blog/:slug' element={<SingleBlogPage />} />
+
+      {/* update route */}
+      <Route path='/update/:slug' element={<UpdateBlog />} />
 
       {/* 404 page */}
       <Route path='*' element={<PageNotFound />} />

@@ -5,5 +5,6 @@ import SingleBlogPage from "./SingleBlogPage.jsx"
 import Profile from './Profile.jsx'
 import PageNotFound from './PageNotFound.jsx'
 import AddBlog from "./AddBlog.jsx"
+import UpdateBlog from "./UpdateBlog.jsx"
 
-export { Home, Login, Register, SingleBlogPage, Profile, PageNotFound, AddBlog }
+export { Home, Login, Register, SingleBlogPage, Profile, PageNotFound, AddBlog, UpdateBlog }
